@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://Scripts/small_missile.gd" id="1_1oulg"]
+[ext_resource type="Texture2D" uid="uid://tlclq812lkr0" path="res://Assets/Missiles/small_blue_missile2.png" id="2_c3qkf"]
+[ext_resource type="Texture2D" uid="uid://dj2xv1w062qw7" path="res://Assets/Missiles/small_blue_missile1.png" id="2_w735l"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gcmni"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_w735l")
+}],
+"loop": true,
+"name": &"blue1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_c3qkf")
+}],
+"loop": true,
+"name": &"blue2",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jd27h"]
+size = Vector2(80, 110)
+
+[node name="SmallMissile" type="Area2D" groups=["player_missiles"]]
+scale = Vector2(0.4, 0.4)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_1oulg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gcmni")
+animation = &"blue1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9.53674e-07)
+scale = Vector2(0.4, 0.4)
+shape = SubResource("RectangleShape2D_jd27h")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(16, 2.2)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

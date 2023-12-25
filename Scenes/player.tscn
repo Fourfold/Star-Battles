@@ -1,0 +1,253 @@
+[gd_scene load_steps=34 format=3]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_4bt8r"]
+[ext_resource type="PackedScene" path="res://Scenes/small_missile.tscn" id="2_f5k3s"]
+[ext_resource type="Shader" path="res://Scripts/customization.gdshader" id="3_uetgi"]
+[ext_resource type="Texture2D" uid="uid://bffsoglgjwp4h" path="res://Assets/Explosion/explosion1.png" id="4_njjlu"]
+[ext_resource type="Texture2D" uid="uid://cclg7sm1g7jfk" path="res://Assets/Explosion/explosion2.png" id="5_nlvag"]
+[ext_resource type="Texture2D" uid="uid://ca2emvf4ujinl" path="res://Assets/Explosion/explosion3.png" id="6_ehbh5"]
+[ext_resource type="Texture2D" uid="uid://f4bk02tjc5ps" path="res://Assets/Explosion/explosion4.png" id="7_us5ou"]
+[ext_resource type="Texture2D" uid="uid://t2w2c2tocw8e" path="res://Assets/Explosion/explosion5.png" id="8_hsrqm"]
+[ext_resource type="Texture2D" uid="uid://qp1fh4b5mg4a" path="res://Assets/Explosion/explosion6.png" id="9_jb0ce"]
+[ext_resource type="Texture2D" uid="uid://blbe8mou3cyfh" path="res://Assets/Explosion/explosion7.png" id="10_xysjx"]
+[ext_resource type="Texture2D" uid="uid://cj5be8mg51ibq" path="res://Assets/Explosion/explosion8.png" id="11_xt85m"]
+[ext_resource type="Texture2D" uid="uid://di2u0lu77m27l" path="res://Assets/Explosion/explosion9.png" id="12_fs0y2"]
+[ext_resource type="Texture2D" uid="uid://h61svs700al3" path="res://Assets/Ships/jet_engine.png" id="13_rxqn2"]
+[ext_resource type="AudioStream" uid="uid://bjx5af75r2rrr" path="res://Assets/Audio/player_explosion.ogg" id="14_y43l6"]
+[ext_resource type="Texture2D" uid="uid://yc47u63exvfl" path="res://Assets/Ships/player1.png" id="16_sbfkb"]
+[ext_resource type="Texture2D" uid="uid://c1ekkfkaqspm7" path="res://Assets/Ships/player2.png" id="17_1mrfr"]
+[ext_resource type="Texture2D" uid="uid://blnoxmbr43lye" path="res://Assets/Ships/player3.png" id="18_q6j34"]
+[ext_resource type="Texture2D" uid="uid://cosreyiyqjyuk" path="res://Assets/Ships/player4.png" id="19_g0n38"]
+[ext_resource type="Texture2D" uid="uid://djbushgjwoh2k" path="res://Assets/Ships/player5.png" id="20_o7yow"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5uqmu"]
+shader = ExtResource("3_uetgi")
+shader_parameter/rgb = Vector3(1, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_77a1l"]
+shader = ExtResource("3_uetgi")
+shader_parameter/rgb = Vector3(1, 0, 0)
+
+[sub_resource type="Animation" id="Animation_ld031"]
+resource_name = "process"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.498039), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.5), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rqlrh"]
+_data = {
+"process": SubResource("Animation_ld031")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jmu63"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_njjlu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_nlvag")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ehbh5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_us5ou")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_hsrqm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_jb0ce")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_xysjx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xt85m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_fs0y2")
+}],
+"loop": true,
+"name": &"explode",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5qtox"]
+radius = 35.5906
+height = 124.963
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7qjf"]
+size = Vector2(240, 200)
+
+[sub_resource type="Animation" id="Animation_esdyc"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_k22xm"]
+resource_name = "explode"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_toedd"]
+_data = {
+"appear": SubResource("Animation_esdyc"),
+"explode": SubResource("Animation_k22xm")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vd8j6"]
+shader = ExtResource("3_uetgi")
+shader_parameter/rgb = Vector3(1, 0, 0.157)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lmkg1"]
+shader = ExtResource("3_uetgi")
+shader_parameter/rgb = Vector3(0.627, 0, 0.118)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u135r"]
+shader = ExtResource("3_uetgi")
+shader_parameter/rgb = Vector3(0.118, 0.549, 0.549)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3d4fy"]
+shader = ExtResource("3_uetgi")
+shader_parameter/rgb = Vector3(0.157, 0.706, 0.706)
+
+[node name="Player" type="Area2D"]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_4bt8r")
+enemy_missile = ExtResource("2_f5k3s")
+
+[node name="JetEngines" type="Node2D" parent="."]
+position = Vector2(0, 112)
+metadata/_edit_group_ = true
+
+[node name="LeftEngine" type="Sprite2D" parent="JetEngines"]
+material = SubResource("ShaderMaterial_5uqmu")
+position = Vector2(-80, 125)
+texture = ExtResource("13_rxqn2")
+
+[node name="RightEngine" type="Sprite2D" parent="JetEngines"]
+material = SubResource("ShaderMaterial_77a1l")
+position = Vector2(80, 125)
+texture = ExtResource("13_rxqn2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="JetEngines"]
+libraries = {
+"": SubResource("AnimationLibrary_rqlrh")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 3.14159
+scale = Vector2(1e-05, 1e-05)
+sprite_frames = SubResource("SpriteFrames_jmu63")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(120, -92)
+rotation = 0.715585
+shape = SubResource("CapsuleShape2D_5qtox")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, 20)
+shape = SubResource("RectangleShape2D_g7qjf")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(-120, -92)
+rotation = -0.715585
+shape = SubResource("CapsuleShape2D_5qtox")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_toedd")
+}
+
+[node name="ExplosionPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_y43l6")
+
+[node name="Texture" type="Sprite2D" parent="."]
+rotation = 3.14159
+
+[node name="Sprite1" type="Sprite2D" parent="Texture"]
+material = SubResource("ShaderMaterial_vd8j6")
+texture = ExtResource("16_sbfkb")
+
+[node name="Sprite2" type="Sprite2D" parent="Texture"]
+material = SubResource("ShaderMaterial_lmkg1")
+texture = ExtResource("17_1mrfr")
+
+[node name="Sprite3" type="Sprite2D" parent="Texture"]
+material = SubResource("ShaderMaterial_u135r")
+texture = ExtResource("18_q6j34")
+
+[node name="Sprite4" type="Sprite2D" parent="Texture"]
+material = SubResource("ShaderMaterial_3d4fy")
+texture = ExtResource("19_g0n38")
+
+[node name="Sprite5" type="Sprite2D" parent="Texture"]
+texture = ExtResource("20_o7yow")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
+limit_left = -64
+limit_top = 0
+limit_right = 544
+limit_bottom = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 1.0
+drag_horizontal_enabled = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

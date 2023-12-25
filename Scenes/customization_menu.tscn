@@ -1,0 +1,380 @@
+[gd_scene load_steps=35 format=3 uid="uid://dr7h8pkd1kg6t"]
+
+[ext_resource type="Script" path="res://Scripts/customization_menu.gd" id="1_ar0hb"]
+[ext_resource type="FontFile" uid="uid://iswb6pwnyrki" path="res://Assets/Xolonium-Regular.ttf" id="2_glkdw"]
+[ext_resource type="Shader" path="res://Scripts/customization.gdshader" id="3_b8uw3"]
+[ext_resource type="Texture2D" uid="uid://copbogcxe3y8u" path="res://Assets/Icons/back_icon.png" id="3_df77n"]
+[ext_resource type="Texture2D" uid="uid://h61svs700al3" path="res://Assets/Ships/jet_engine.png" id="5_wb57u"]
+[ext_resource type="Texture2D" uid="uid://bffsoglgjwp4h" path="res://Assets/Explosion/explosion1.png" id="6_nya6u"]
+[ext_resource type="Texture2D" uid="uid://cclg7sm1g7jfk" path="res://Assets/Explosion/explosion2.png" id="7_alylq"]
+[ext_resource type="Texture2D" uid="uid://ca2emvf4ujinl" path="res://Assets/Explosion/explosion3.png" id="8_kjuss"]
+[ext_resource type="Texture2D" uid="uid://f4bk02tjc5ps" path="res://Assets/Explosion/explosion4.png" id="9_2iq4e"]
+[ext_resource type="Texture2D" uid="uid://t2w2c2tocw8e" path="res://Assets/Explosion/explosion5.png" id="10_8bbfb"]
+[ext_resource type="Texture2D" uid="uid://qp1fh4b5mg4a" path="res://Assets/Explosion/explosion6.png" id="11_m8kj8"]
+[ext_resource type="Texture2D" uid="uid://blbe8mou3cyfh" path="res://Assets/Explosion/explosion7.png" id="12_srygl"]
+[ext_resource type="Texture2D" uid="uid://cj5be8mg51ibq" path="res://Assets/Explosion/explosion8.png" id="13_fuptm"]
+[ext_resource type="Texture2D" uid="uid://di2u0lu77m27l" path="res://Assets/Explosion/explosion9.png" id="14_rar7b"]
+[ext_resource type="Texture2D" uid="uid://yc47u63exvfl" path="res://Assets/Ships/player1.png" id="15_b4bp8"]
+[ext_resource type="Texture2D" uid="uid://c1ekkfkaqspm7" path="res://Assets/Ships/player2.png" id="16_i643m"]
+[ext_resource type="Texture2D" uid="uid://blnoxmbr43lye" path="res://Assets/Ships/player3.png" id="17_8nb0x"]
+[ext_resource type="Texture2D" uid="uid://cosreyiyqjyuk" path="res://Assets/Ships/player4.png" id="18_4worx"]
+[ext_resource type="Texture2D" uid="uid://djbushgjwoh2k" path="res://Assets/Ships/player5.png" id="19_agpq8"]
+[ext_resource type="PackedScene" path="res://Scenes/click_sound.tscn" id="20_747nu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_684rr"]
+shader = ExtResource("3_b8uw3")
+shader_parameter/rgb = Vector3(1, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pigkk"]
+shader = ExtResource("3_b8uw3")
+shader_parameter/rgb = Vector3(1, 0, 0)
+
+[sub_resource type="Animation" id="Animation_ld031"]
+resource_name = "process"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.498039), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.5), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rqlrh"]
+_data = {
+"process": SubResource("Animation_ld031")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bkijt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_nya6u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_alylq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kjuss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2iq4e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_8bbfb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_m8kj8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_srygl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_fuptm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_rar7b")
+}],
+"loop": true,
+"name": &"explode",
+"speed": 10.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4bqdb"]
+shader = ExtResource("3_b8uw3")
+shader_parameter/rgb = Vector3(1, 0, 0.157)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5pqmc"]
+shader = ExtResource("3_b8uw3")
+shader_parameter/rgb = Vector3(0.627, 0, 0.118)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ld20q"]
+shader = ExtResource("3_b8uw3")
+shader_parameter/rgb = Vector3(0.118, 0.549, 0.549)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0li35"]
+shader = ExtResource("3_b8uw3")
+shader_parameter/rgb = Vector3(0.157, 0.706, 0.706)
+
+[sub_resource type="Animation" id="Animation_3mkwt"]
+resource_name = "appear"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_o41rb"]
+resource_name = "magnify"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(240, 80), Vector2(240, 360)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.2, 0.2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l6jmm"]
+_data = {
+"appear": SubResource("Animation_3mkwt"),
+"magnify": SubResource("Animation_o41rb")
+}
+
+[sub_resource type="Animation" id="Animation_148ex"]
+resource_name = "appear"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/BackButton:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/VBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_244ln"]
+_data = {
+"appear": SubResource("Animation_148ex")
+}
+
+[node name="CustomizationMenu" type="Node2D" groups=["menus"]]
+script = ExtResource("1_ar0hb")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -176.0
+offset_top = 256.0
+offset_right = 176.0
+offset_bottom = 720.0
+grow_horizontal = 2
+theme_override_constants/separation = 2
+
+[node name="Color4Label" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_glkdw")
+theme_override_font_sizes/font_size = 30
+text = "Primary Color 1"
+horizontal_alignment = 1
+
+[node name="Color4PickerButton" type="ColorPickerButton" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+toggle_mode = false
+text = "Color 1"
+edit_alpha = false
+
+[node name="Color3Label" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_glkdw")
+theme_override_font_sizes/font_size = 30
+text = "Primary Color 2"
+horizontal_alignment = 1
+
+[node name="Color3PickerButton" type="ColorPickerButton" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+toggle_mode = false
+text = "Color 1"
+edit_alpha = false
+
+[node name="Color1Label" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_glkdw")
+theme_override_font_sizes/font_size = 30
+text = "Secondary Color 1"
+horizontal_alignment = 1
+
+[node name="Color1PickerButton" type="ColorPickerButton" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+toggle_mode = false
+text = "Color 1"
+edit_alpha = false
+
+[node name="Color2Label" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_glkdw")
+theme_override_font_sizes/font_size = 30
+text = "Secondary Color 2"
+horizontal_alignment = 1
+
+[node name="Color2PickerButton" type="ColorPickerButton" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+toggle_mode = false
+text = "Color 1"
+edit_alpha = false
+
+[node name="ColorJetLabel" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_glkdw")
+theme_override_font_sizes/font_size = 30
+text = "Jet Engines Color"
+horizontal_alignment = 1
+
+[node name="ColorJetPickerButton" type="ColorPickerButton" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+toggle_mode = false
+text = "Color 1"
+edit_alpha = false
+
+[node name="BackButton" type="Button" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 24.0
+offset_top = 40.0
+offset_right = 88.0
+offset_bottom = 104.0
+icon = ExtResource("3_df77n")
+expand_icon = true
+
+[node name="Ship" type="Node2D" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(240, 104)
+scale = Vector2(0.3, 0.3)
+metadata/_edit_group_ = true
+
+[node name="JetEngines" type="Node2D" parent="CanvasLayer/Ship"]
+position = Vector2(0, 112)
+
+[node name="LeftEngine" type="Sprite2D" parent="CanvasLayer/Ship/JetEngines"]
+material = SubResource("ShaderMaterial_684rr")
+position = Vector2(-80, 125)
+texture = ExtResource("5_wb57u")
+
+[node name="RightEngine" type="Sprite2D" parent="CanvasLayer/Ship/JetEngines"]
+material = SubResource("ShaderMaterial_pigkk")
+position = Vector2(80, 125)
+texture = ExtResource("5_wb57u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Ship/JetEngines"]
+autoplay = "process"
+libraries = {
+"": SubResource("AnimationLibrary_rqlrh")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Ship"]
+rotation = 3.14159
+scale = Vector2(1.00256e-05, 1e-05)
+sprite_frames = SubResource("SpriteFrames_bkijt")
+
+[node name="Texture" type="Sprite2D" parent="CanvasLayer/Ship"]
+rotation = 3.14159
+
+[node name="Sprite1" type="Sprite2D" parent="CanvasLayer/Ship/Texture"]
+material = SubResource("ShaderMaterial_4bqdb")
+texture = ExtResource("15_b4bp8")
+
+[node name="Sprite2" type="Sprite2D" parent="CanvasLayer/Ship/Texture"]
+material = SubResource("ShaderMaterial_5pqmc")
+texture = ExtResource("16_i643m")
+
+[node name="Sprite3" type="Sprite2D" parent="CanvasLayer/Ship/Texture"]
+material = SubResource("ShaderMaterial_ld20q")
+texture = ExtResource("17_8nb0x")
+
+[node name="Sprite4" type="Sprite2D" parent="CanvasLayer/Ship/Texture"]
+material = SubResource("ShaderMaterial_0li35")
+texture = ExtResource("18_4worx")
+
+[node name="Sprite5" type="Sprite2D" parent="CanvasLayer/Ship/Texture"]
+texture = ExtResource("19_agpq8")
+
+[node name="PlayerButton" type="Button" parent="CanvasLayer/Ship"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -200.0
+offset_top = -160.0
+offset_right = 200.0
+offset_bottom = 360.0
+flat = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Ship"]
+libraries = {
+"": SubResource("AnimationLibrary_l6jmm")
+}
+
+[node name="ClickSound" parent="." instance=ExtResource("20_747nu")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_244ln")
+}
+
+[connection signal="color_changed" from="CanvasLayer/VBoxContainer/Color4PickerButton" to="." method="_on_color_4_picker_button_color_changed"]
+[connection signal="color_changed" from="CanvasLayer/VBoxContainer/Color3PickerButton" to="." method="_on_color_3_picker_button_color_changed"]
+[connection signal="color_changed" from="CanvasLayer/VBoxContainer/Color1PickerButton" to="." method="_on_color_1_picker_button_color_changed"]
+[connection signal="color_changed" from="CanvasLayer/VBoxContainer/Color2PickerButton" to="." method="_on_color_2_picker_button_color_changed"]
+[connection signal="color_changed" from="CanvasLayer/VBoxContainer/ColorJetPickerButton" to="." method="_on_color_jet_picker_button_color_changed"]
+[connection signal="pressed" from="CanvasLayer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Ship/PlayerButton" to="." method="_on_player_button_pressed"]

@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://Scripts/enemy_missile.gd" id="1_mdldd"]
+[ext_resource type="Texture2D" uid="uid://clifrao00hywy" path="res://Assets/Missiles/small_red_missile1.png" id="2_50nc8"]
+[ext_resource type="Texture2D" uid="uid://de8okmhx710ad" path="res://Assets/Missiles/small_red_missile2.png" id="3_8eh2w"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7dx2i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_50nc8")
+}],
+"loop": true,
+"name": &"red1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_8eh2w")
+}],
+"loop": true,
+"name": &"red2",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_04jir"]
+size = Vector2(32, 44)
+
+[node name="EnemyMissile" type="Area2D" groups=["enemy_missiles"]]
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_mdldd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_7dx2i")
+animation = &"red1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_04jir")

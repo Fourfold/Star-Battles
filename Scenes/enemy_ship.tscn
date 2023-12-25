@@ -1,0 +1,189 @@
+[gd_scene load_steps=23 format=3]
+
+[ext_resource type="Script" path="res://Scripts/enemy_ship.gd" id="1_ruiwl"]
+[ext_resource type="Texture2D" uid="uid://bffsoglgjwp4h" path="res://Assets/Explosion/explosion1.png" id="2_11p22"]
+[ext_resource type="Texture2D" uid="uid://h61svs700al3" path="res://Assets/Ships/jet_engine.png" id="2_gn0jg"]
+[ext_resource type="Texture2D" uid="uid://cclg7sm1g7jfk" path="res://Assets/Explosion/explosion2.png" id="3_mwyfs"]
+[ext_resource type="Texture2D" uid="uid://ca2emvf4ujinl" path="res://Assets/Explosion/explosion3.png" id="4_6a4vt"]
+[ext_resource type="Texture2D" uid="uid://f4bk02tjc5ps" path="res://Assets/Explosion/explosion4.png" id="5_orjcm"]
+[ext_resource type="Texture2D" uid="uid://t2w2c2tocw8e" path="res://Assets/Explosion/explosion5.png" id="6_ed856"]
+[ext_resource type="Texture2D" uid="uid://qp1fh4b5mg4a" path="res://Assets/Explosion/explosion6.png" id="7_u7il4"]
+[ext_resource type="Texture2D" uid="uid://blbe8mou3cyfh" path="res://Assets/Explosion/explosion7.png" id="8_kx68e"]
+[ext_resource type="Texture2D" uid="uid://cj5be8mg51ibq" path="res://Assets/Explosion/explosion8.png" id="9_itskj"]
+[ext_resource type="Texture2D" uid="uid://di2u0lu77m27l" path="res://Assets/Explosion/explosion9.png" id="10_fddkc"]
+[ext_resource type="Texture2D" uid="uid://syxsxg7codid" path="res://Assets/Ships/ship1.png" id="11_cs52t"]
+[ext_resource type="Texture2D" uid="uid://bfkn8d5g84q03" path="res://Assets/Ships/ship2.png" id="12_8r4oi"]
+[ext_resource type="Texture2D" uid="uid://ptfr070gmdsd" path="res://Assets/Ships/ship3.png" id="13_bdhjc"]
+[ext_resource type="Texture2D" uid="uid://dto2ftx336v28" path="res://Assets/Ships/ship4.png" id="14_sy4jw"]
+[ext_resource type="AudioStream" uid="uid://dhksg0u2fgrwk" path="res://Assets/Audio/enemy_explosion.mp3" id="15_o3k2k"]
+
+[sub_resource type="Animation" id="Animation_ld031"]
+resource_name = "process"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.498039), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.5), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rqlrh"]
+_data = {
+"process": SubResource("Animation_ld031")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5bddv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_11p22")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mwyfs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6a4vt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_orjcm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ed856")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_u7il4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kx68e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_itskj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_fddkc")
+}],
+"loop": true,
+"name": &"explosion",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_cs52t")
+}],
+"loop": true,
+"name": &"ship1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_8r4oi")
+}],
+"loop": true,
+"name": &"ship2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_bdhjc")
+}],
+"loop": true,
+"name": &"ship3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_sy4jw")
+}],
+"loop": true,
+"name": &"ship4",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_62wbo"]
+resource_name = "explode"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4vku0"]
+_data = {
+"explode": SubResource("Animation_62wbo")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_isqha"]
+size = Vector2(208, 160)
+
+[node name="EnemyShip" type="Area2D" groups=["enemy_ships"]]
+collision_layer = 5
+collision_mask = 0
+script = ExtResource("1_ruiwl")
+metadata/_edit_vertical_guides_ = [-104.0, 104.0]
+metadata/_edit_horizontal_guides_ = [80.0, -240.0]
+
+[node name="JetEngines" type="Node2D" parent="."]
+position = Vector2(0, -48)
+metadata/_edit_group_ = true
+
+[node name="LeftEngine" type="Sprite2D" parent="JetEngines"]
+position = Vector2(0, -126)
+texture = ExtResource("2_gn0jg")
+flip_v = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="JetEngines"]
+libraries = {
+"": SubResource("AnimationLibrary_rqlrh")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5bddv")
+animation = &"ship1"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_4vku0")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_isqha")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(7.62939e-06, -240)
+scale = Vector2(25.6, 1)
+rect = Rect2(-10, 0, 20, 320)
+
+[node name="ExplosionPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_o3k2k")
+
+[node name="ExplosionTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

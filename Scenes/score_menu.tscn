@@ -1,0 +1,324 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6v0n4uhnxoq3"]
+
+[ext_resource type="Script" path="res://Scripts/score_menu.gd" id="1_o7mbs"]
+[ext_resource type="FontFile" uid="uid://iswb6pwnyrki" path="res://Assets/Xolonium-Regular.ttf" id="2_r3wxp"]
+[ext_resource type="Texture2D" uid="uid://copbogcxe3y8u" path="res://Assets/Icons/back_icon.png" id="3_6reny"]
+[ext_resource type="PackedScene" path="res://Scenes/click_sound.tscn" id="4_w3mvh"]
+
+[sub_resource type="Animation" id="Animation_r45ig"]
+resource_name = "appear"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/VBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/BackButton:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m688m"]
+_data = {
+"appear": SubResource("Animation_r45ig")
+}
+
+[node name="score_menu" type="Node2D" groups=["menus"]]
+script = ExtResource("1_o7mbs")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -176.0
+offset_top = 128.0
+offset_right = 176.0
+offset_bottom = 720.0
+grow_horizontal = 2
+theme_override_constants/separation = 10
+
+[node name="ReferenceRect1" type="ReferenceRect" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Player" type="Label" parent="CanvasLayer/VBoxContainer/ReferenceRect1"]
+layout_mode = 0
+offset_right = 288.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("2_r3wxp")
+theme_override_font_sizes/font_size = 30
+text = "Player 1"
+
+[node name="Score" type="Label" parent="CanvasLayer/VBoxContainer/ReferenceRect1"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -288.0
+offset_bottom = 28.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_r3wxp")
+theme_override_font_sizes/font_size = 30
+text = "Score"
+horizontal_alignment = 2
+
+[node name="ReferenceRect2" type="ReferenceRect" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Player" type="Label" parent="CanvasLayer/VBoxContainer/ReferenceRect2"]
+layout_mode = 0
+offset_right = 288.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("2_r3wxp")
+theme_override_font_sizes/font_size = 30
+text = "Player 2"
+
+[node name="Score" type="Label" parent="CanvasLayer/VBoxContainer/ReferenceRect2"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -288.0
+offset_bottom = 28.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_r3wxp")
+theme_override_font_sizes/font_size = 30
+text = "Score"
+horizontal_alignment = 2
+
+[node name="ReferenceRect3" type="ReferenceRect" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Player" type="Label" parent="CanvasLayer/VBoxContainer/ReferenceRect3"]
+layout_mode = 0
+offset_right = 288.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("2_r3wxp")
+theme_override_font_sizes/font_size = 30
+text = "Player 3"
+
+[node name="Score" type="Label" parent="CanvasLayer/VBoxContainer/ReferenceRect3"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -288.0
+offset_bottom = 28.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_r3wxp")
+theme_override_font_sizes/font_size = 30
+text = "Score"
+horizontal_alignment = 2
+
+[node name="ReferenceRect4" type="ReferenceRect" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Player" type="Label" parent="CanvasLayer/VBoxContainer/ReferenceRect4"]
+layout_mode = 0
+offset_right = 288.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("2_r3wxp")
+theme_override_font_sizes/font_size = 30
+text = "Player 4"
+
+[node name="Score" type="Label" parent="CanvasLayer/VBoxContainer/ReferenceRect4"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -288.0
+offset_bottom = 28.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_r3wxp")
+theme_override_font_sizes/font_size = 30
+text = "Score"
+horizontal_alignment = 2
+
+[node name="ReferenceRect5" type="ReferenceRect" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Player" type="Label" parent="CanvasLayer/VBoxContainer/ReferenceRect5"]
+layout_mode = 0
+offset_right = 288.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("2_r3wxp")
+theme_override_font_sizes/font_size = 30
+text = "Player 5"
+
+[node name="Score" type="Label" parent="CanvasLayer/VBoxContainer/ReferenceRect5"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -288.0
+offset_bottom = 28.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_r3wxp")
+theme_override_font_sizes/font_size = 30
+text = "Score"
+horizontal_alignment = 2
+
+[node name="ReferenceRect6" type="ReferenceRect" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Player" type="Label" parent="CanvasLayer/VBoxContainer/ReferenceRect6"]
+layout_mode = 0
+offset_right = 288.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("2_r3wxp")
+theme_override_font_sizes/font_size = 30
+text = "Player 6"
+
+[node name="Score" type="Label" parent="CanvasLayer/VBoxContainer/ReferenceRect6"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -288.0
+offset_bottom = 28.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_r3wxp")
+theme_override_font_sizes/font_size = 30
+text = "Score"
+horizontal_alignment = 2
+
+[node name="ReferenceRect7" type="ReferenceRect" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Player" type="Label" parent="CanvasLayer/VBoxContainer/ReferenceRect7"]
+layout_mode = 0
+offset_right = 288.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("2_r3wxp")
+theme_override_font_sizes/font_size = 30
+text = "Player 7"
+
+[node name="Score" type="Label" parent="CanvasLayer/VBoxContainer/ReferenceRect7"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -288.0
+offset_bottom = 28.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_r3wxp")
+theme_override_font_sizes/font_size = 30
+text = "Score"
+horizontal_alignment = 2
+
+[node name="ReferenceRect8" type="ReferenceRect" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Player" type="Label" parent="CanvasLayer/VBoxContainer/ReferenceRect8"]
+layout_mode = 0
+offset_right = 288.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("2_r3wxp")
+theme_override_font_sizes/font_size = 30
+text = "Player 8"
+
+[node name="Score" type="Label" parent="CanvasLayer/VBoxContainer/ReferenceRect8"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -288.0
+offset_bottom = 28.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_r3wxp")
+theme_override_font_sizes/font_size = 30
+text = "Score"
+horizontal_alignment = 2
+
+[node name="ReferenceRect9" type="ReferenceRect" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Player" type="Label" parent="CanvasLayer/VBoxContainer/ReferenceRect9"]
+layout_mode = 0
+offset_right = 288.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("2_r3wxp")
+theme_override_font_sizes/font_size = 30
+text = "Player 9"
+
+[node name="Score" type="Label" parent="CanvasLayer/VBoxContainer/ReferenceRect9"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -288.0
+offset_bottom = 28.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_r3wxp")
+theme_override_font_sizes/font_size = 30
+text = "Score"
+horizontal_alignment = 2
+
+[node name="ReferenceRect10" type="ReferenceRect" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Player" type="Label" parent="CanvasLayer/VBoxContainer/ReferenceRect10"]
+layout_mode = 0
+offset_right = 288.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("2_r3wxp")
+theme_override_font_sizes/font_size = 30
+text = "Player 10"
+
+[node name="Score" type="Label" parent="CanvasLayer/VBoxContainer/ReferenceRect10"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -288.0
+offset_bottom = 28.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_r3wxp")
+theme_override_font_sizes/font_size = 30
+text = "Score"
+horizontal_alignment = 2
+
+[node name="BackButton" type="Button" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 24.0
+offset_top = 40.0
+offset_right = 88.0
+offset_bottom = 104.0
+icon = ExtResource("3_6reny")
+expand_icon = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m688m")
+}
+
+[node name="ClickSound" parent="." instance=ExtResource("4_w3mvh")]
+
+[connection signal="pressed" from="CanvasLayer/BackButton" to="." method="_on_back_button_pressed"]
